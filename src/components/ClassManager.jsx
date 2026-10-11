@@ -40,7 +40,7 @@ export default function ClassManager({
     setOpenCreate(false);
   };
 
-  const active = classes.find((c) => c.id === activeClassId);
+  const active = classes?.find((c) => c.id === activeClassId);
 
   return (
     <div className="flex flex-wrap items-center gap-2">
