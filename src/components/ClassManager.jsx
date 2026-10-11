@@ -40,7 +40,8 @@ export default function ClassManager({
     setOpenCreate(false);
   };
 
-  const active = classes?.find((c) => c.id === activeClassId);
+const safeClasses = Array.isArray(classes) ? classes : [];
+const active = safeClasses.find((c) => c.id === activeClassId);
 
   return (
     <div className="flex flex-wrap items-center gap-2">
@@ -50,7 +51,7 @@ export default function ClassManager({
           <SelectValue placeholder={t("classes")} />
         </SelectTrigger>
         <SelectContent>
-          {classes.map((c) => (
+         {safeClasses.map((c) => (
             <SelectItem key={c.id} value={c.id} data-testid={`class-option-${c.id}`}>
               {c.name}
             </SelectItem>
